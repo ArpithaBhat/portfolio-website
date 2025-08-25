@@ -1,0 +1,99 @@
+2024-08-19 08:00:01.123 [INFO] [SystemInit] Application startup initiated - version 2.3.4
+2024-08-19 08:00:01.145 [INFO] [DatabaseManager] Connecting to database server db-prod-01.example.com:5432
+2024-08-19 08:00:01.234 [INFO] [DatabaseManager] Database connection established - pool_size=20
+2024-08-19 08:00:01.245 [INFO] [CacheManager] Redis cache connection established - server=redis-01.example.com:6379
+2024-08-19 08:00:01.256 [INFO] [ConfigManager] Configuration loaded from /etc/app/config.yml
+2024-08-19 08:00:01.267 [INFO] [SecurityService] SSL certificates loaded - expires=2025-12-31
+2024-08-19 08:00:01.278 [INFO] [HttpServer] HTTP server listening on port 8080
+2024-08-19 08:00:01.289 [INFO] [SystemInit] Application startup completed in 166ms
+2024-08-19 08:00:15.456 [INFO] [HttpServer] 192.168.1.101 - "GET /health HTTP/1.1" 200 45 12ms
+2024-08-19 08:00:32.789 [INFO] [AuthService] User login attempt - user_id=1001 ip=10.0.1.45
+2024-08-19 08:00:32.812 [INFO] [AuthService] User authentication successful - user_id=1001 session_id=abc123def456
+2024-08-19 08:00:33.123 [INFO] [HttpServer] 10.0.1.45 - "POST /api/auth/login HTTP/1.1" 200 156 234ms
+2024-08-19 08:01:45.567 [INFO] [UserService] Processing user profile update - user_id=1001
+2024-08-19 08:01:45.598 [DEBUG] [DatabaseManager] Executing query: UPDATE users SET email='...' WHERE id=1001
+2024-08-19 08:01:45.623 [INFO] [UserService] User profile updated successfully - user_id=1001 duration=56ms
+2024-08-19 08:01:45.634 [INFO] [HttpServer] 10.0.1.45 - "PUT /api/users/1001 HTTP/1.1" 200 78 98ms
+2024-08-19 08:02:15.789 [INFO] [OrderService] New order received - order_id=ORD-2024-001234 customer_id=1001
+2024-08-19 08:02:15.801 [DEBUG] [InventoryService] Checking inventory for product_id=P001 quantity=2
+2024-08-19 08:02:15.823 [INFO] [InventoryService] Inventory check passed - product_id=P001 available=15
+2024-08-19 08:02:15.834 [INFO] [PaymentService] Processing payment - order_id=ORD-2024-001234 amount=299.99
+2024-08-19 08:02:16.145 [INFO] [PaymentService] Payment processed successfully - transaction_id=TXN-789456123
+2024-08-19 08:02:16.156 [INFO] [OrderService] Order confirmed - order_id=ORD-2024-001234
+2024-08-19 08:02:16.167 [INFO] [NotificationService] Sending order confirmation email - user_id=1001
+2024-08-19 08:02:16.234 [INFO] [HttpServer] 10.0.1.45 - "POST /api/orders HTTP/1.1" 201 234 456ms
+2024-08-19 08:03:22.456 [WARN] [DatabaseManager] Connection pool usage high - active=18 max=20
+2024-08-19 08:03:45.678 [INFO] [AuthService] User logout - user_id=1001 session_duration=3min_13sec
+2024-08-19 08:04:01.234 [ERROR] [PaymentService] Payment gateway timeout - order_id=ORD-2024-001235 retry_count=1
+2024-08-19 08:04:01.256 [INFO] [PaymentService] Retrying payment processing - order_id=ORD-2024-001235
+2024-08-19 08:04:02.123 [INFO] [PaymentService] Payment retry successful - order_id=ORD-2024-001235
+2024-08-19 08:05:15.789 [DEBUG] [CacheManager] Cache hit - key=user:profile:1002 ttl=3600s
+2024-08-19 08:05:16.012 [INFO] [UserService] User profile retrieved from cache - user_id=1002
+2024-08-19 08:06:30.456 [ERROR] [DatabaseManager] Query execution failed - ERROR: duplicate key value violates unique constraint
+2024-08-19 08:06:30.467 [ERROR] [UserService] Failed to create user account - email already exists
+2024-08-19 08:06:30.478 [INFO] [HttpServer] 10.0.1.67 - "POST /api/users HTTP/1.1" 400 89 234ms
+2024-08-19 08:07:45.123 [INFO] [BackgroundJob] Starting daily cleanup job - job_id=cleanup_20240819
+2024-08-19 08:07:45.234 [DEBUG] [BackgroundJob] Cleaning expired sessions - cutoff=2024-08-18 08:07:45
+2024-08-19 08:07:45.567 [INFO] [BackgroundJob] Cleaned 15 expired sessions
+2024-08-19 08:07:45.678 [DEBUG] [BackgroundJob] Cleaning temporary files - directory=/tmp/app/
+2024-08-19 08:07:45.789 [INFO] [BackgroundJob] Cleaned 23 temporary files - reclaimed=145MB
+2024-08-19 08:07:45.890 [INFO] [BackgroundJob] Daily cleanup completed - duration=767ms
+2024-08-19 08:08:12.345 [WARN] [SecurityService] Multiple failed login attempts detected - ip=203.0.113.42 count=5
+2024-08-19 08:08:12.356 [INFO] [SecurityService] IP address blocked - ip=203.0.113.42 duration=1hour
+2024-08-19 08:08:12.367 [INFO] [HttpServer] 203.0.113.42 - "POST /api/auth/login HTTP/1.1" 429 67 12ms
+2024-08-19 08:09:23.456 [ERROR] [CacheManager] Redis connection lost - reconnecting...
+2024-08-19 08:09:23.567 [WARN] [CacheManager] Cache unavailable - falling back to database
+2024-08-19 08:09:24.123 [INFO] [CacheManager] Redis connection restored - downtime=667ms
+2024-08-19 08:10:01.234 [INFO] [HealthCheck] System health check - status=healthy cpu=45% memory=62% disk=78%
+2024-08-19 08:10:15.678 [INFO] [OrderService] Bulk order processing started - batch_size=50
+2024-08-19 08:10:15.789 [DEBUG] [OrderService] Processing order 1/50 - order_id=ORD-2024-001236
+2024-08-19 08:10:15.823 [DEBUG] [OrderService] Processing order 2/50 - order_id=ORD-2024-001237
+2024-08-19 08:10:15.845 [DEBUG] [OrderService] Processing order 3/50 - order_id=ORD-2024-001238
+2024-08-19 08:10:16.234 [INFO] [OrderService] Bulk order processing completed - processed=50 failed=0 duration=556ms
+2024-08-19 08:11:30.456 [ERROR] [NotificationService] SMTP server unavailable - email queue backing up
+2024-08-19 08:11:30.467 [WARN] [NotificationService] Email queue size: 125 messages pending
+2024-08-19 08:11:45.789 [INFO] [NotificationService] SMTP connection restored - processing queue
+2024-08-19 08:12:15.123 [INFO] [MetricsCollector] Hourly metrics - requests=1247 avg_response_time=156ms errors=12
+2024-08-19 08:12:30.456 [WARN] [DatabaseManager] Slow query detected - duration=2.3s query=SELECT * FROM orders WHERE...
+2024-08-19 08:13:01.789 [INFO] [ConfigManager] Configuration hot-reload triggered
+2024-08-19 08:13:01.823 [INFO] [ConfigManager] Configuration updated - feature_flags refreshed
+2024-08-19 08:13:45.234 [ERROR] [ExternalAPI] Third-party service timeout - service=payment_processor timeout=30s
+2024-08-19 08:13:45.245 [ERROR] [PaymentService] Payment processing failed - order_id=ORD-2024-001239
+2024-08-19 08:13:45.256 [INFO] [OrderService] Order moved to pending payment - order_id=ORD-2024-001239
+2024-08-19 08:14:12.567 [INFO] [SecurityService] SSL certificate renewal check - expires_in=134_days
+2024-08-19 08:15:01.234 [INFO] [SessionManager] Active sessions cleanup - removed=45 active=234
+2024-08-19 08:15:30.678 [DEBUG] [ApiRateLimit] Rate limit check - client_id=client_001 requests=95 limit=100
+2024-08-19 08:15:45.890 [WARN] [ApiRateLimit] Rate limit approaching - client_id=client_001 requests=98 limit=100
+2024-08-19 08:16:01.123 [ERROR] [ApiRateLimit] Rate limit exceeded - client_id=client_001 blocking for 60s
+2024-08-19 08:16:01.134 [INFO] [HttpServer] 10.0.1.89 - "GET /api/products HTTP/1.1" 429 78 5ms
+2024-08-19 08:17:15.456 [INFO] [DatabaseManager] Connection pool stats - active=12 idle=8 total=20
+2024-08-19 08:18:01.789 [FATAL] [DatabaseManager] Database connection lost - unable to reconnect
+2024-08-19 08:18:01.800 [ERROR] [SystemMonitor] Critical system error - database unavailable
+2024-08-19 08:18:01.811 [INFO] [CircuitBreaker] Database circuit breaker opened - routing to backup
+2024-08-19 08:18:05.234 [INFO] [DatabaseManager] Backup database connection established
+2024-08-19 08:18:05.245 [INFO] [SystemMonitor] System recovery initiated - backup systems active
+2024-08-19 08:18:30.567 [INFO] [DatabaseManager] Primary database connection restored
+2024-08-19 08:18:30.578 [INFO] [CircuitBreaker] Database circuit breaker closed - normal operation resumed
+2024-08-19 08:19:45.123 [INFO] [BackupService] Database backup initiated - type=incremental
+2024-08-19 08:19:47.456 [INFO] [BackupService] Backup completed - size=2.3GB duration=2.3s
+2024-08-19 08:20:01.234 [INFO] [HealthCheck] System health check - status=healthy cpu=52% memory=58% disk=78%
+2024-08-19 08:20:15.678 [DEBUG] [GarbageCollector] Memory cleanup triggered - heap_usage=85%
+2024-08-19 08:20:15.789 [INFO] [GarbageCollector] Memory cleanup completed - freed=256MB new_usage=64%
+2024-08-19 08:21:30.456 [INFO] [LoadBalancer] Server health check - web-01:healthy web-02:healthy web-03:degraded
+2024-08-19 08:21:30.467 [WARN] [LoadBalancer] Server performance degraded - web-03 response_time=5.2s
+2024-08-19 08:21:30.478 [INFO] [LoadBalancer] Traffic rerouted - web-03 removed from pool
+2024-08-19 08:22:45.789 [INFO] [FeatureFlag] Feature toggle updated - feature=new_checkout_flow enabled=true
+2024-08-19 08:23:01.123 [ERROR] [FileSystem] Disk space critical - partition=/var/log usage=95% available=1.2GB
+2024-08-19 08:23:01.134 [WARN] [LogRotation] Emergency log rotation triggered
+2024-08-19 08:23:01.234 [INFO] [LogRotation] Log files compressed and rotated - freed=500MB
+2024-08-19 08:24:15.567 [INFO] [ApiGateway] New API endpoint registered - /api/v2/analytics
+2024-08-19 08:25:30.890 [DEBUG] [WebSocket] Client connected - session_id=ws_abc123 user_id=1003
+2024-08-19 08:25:45.123 [DEBUG] [WebSocket] Message received - session_id=ws_abc123 type=ping
+2024-08-19 08:25:45.134 [DEBUG] [WebSocket] Message sent - session_id=ws_abc123 type=pong
+2024-08-19 08:26:01.456 [INFO] [ReportGenerator] Monthly report generation started - report_id=RPT-202408
+2024-08-19 08:26:15.789 [INFO] [ReportGenerator] Report generation completed - report_id=RPT-202408 pages=245
+2024-08-19 08:27:30.123 [WARN] [MemoryMonitor] Memory usage high - heap=1.8GB max=2.0GB gc_frequency=high
+2024-08-19 08:28:45.456 [INFO] [CacheManager] Cache statistics - hit_rate=87% miss_rate=13% evictions=23
+2024-08-19 08:29:01.789 [ERROR] [ExternalAPI] Service dependency failure - service=user_verification status=503
+2024-08-19 08:29:01.800 [INFO] [ServiceDiscovery] Marking service as unhealthy - service=user_verification
+2024-08-19 08:30:01.234 [INFO] [HealthCheck] System health check - status=degraded cpu=67% memory=74% disk=79%
